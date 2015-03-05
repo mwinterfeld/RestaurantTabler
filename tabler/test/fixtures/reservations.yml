@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startTime: 2015-03-05 13:03:21
+  endTime: 2015-03-05 13:03:21
+  partySize: 
+  tables: 
+  seats: 
+
+two:
+  startTime: 2015-03-05 13:03:21
+  endTime: 2015-03-05 13:03:21
+  partySize: 
+  tables: 
+  seats: 
