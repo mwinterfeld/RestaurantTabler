@@ -6,6 +6,8 @@ class CreateReservations < ActiveRecord::Migration
       t.integer :partySize
       t.integer :tables, array:true, default:[]
       t.integer :seats, array:true, default:[]
+      t.belongs_to :user
+      t.belongs_to :restaurant
 
       t.timestamps null: false
     end

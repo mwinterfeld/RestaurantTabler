@@ -19,8 +19,10 @@ ActiveRecord::Schema.define(version: 20150305200647) do
     t.integer  "partySize"
     t.integer  "tables"
     t.integer  "seats"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.integer  "restaurant_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
