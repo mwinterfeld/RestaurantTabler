@@ -13,37 +13,40 @@
 
 ActiveRecord::Schema.define(version: 20150305200647) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "reservations", force: :cascade do |t|
     t.datetime "startTime"
     t.datetime "endTime"
     t.integer  "partySize"
-    t.integer  "tables"
-    t.integer  "seats"
+    t.integer  "tables",        default: [],              array: true
+    t.integer  "seats",         default: [],              array: true
     t.integer  "user_id"
     t.integer  "restaurant_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
     t.string   "description"
-    t.integer  "tables"
-    t.integer  "seats"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "tables",      default: [],              array: true
+    t.integer  "seats",       default: [],              array: true
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "firstName"
     t.string   "lastName"
     t.string   "username"
-    t.string   "hashedPassword"
+    t.string   "password_digest"
     t.string   "email"
     t.boolean  "isAdmin"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
 end
