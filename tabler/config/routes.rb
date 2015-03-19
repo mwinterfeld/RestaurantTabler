@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :admins, :controllers => { registrations: 'admins/registrations' }
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :users
+  resources :admins
 
   resources :reservations
 
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root :controller => 'static', :action => 'welcome'
+  #root :to => "users/sign_in"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

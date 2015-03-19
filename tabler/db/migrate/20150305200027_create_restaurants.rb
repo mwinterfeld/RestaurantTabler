@@ -4,8 +4,7 @@ class CreateRestaurants < ActiveRecord::Migration
       t.string :name
       t.string :category
       t.string :description
-      t.integer :tables, array:true, default:[]
-      t.integer :seats, array:true, default:[]
+      t.belongs_to :admin
 
       t.timestamps null: false
     end
