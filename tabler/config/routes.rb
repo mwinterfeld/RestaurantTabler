@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { registrations: 'registrations' }
+  devise_for :admins, :controllers => { registrations: 'admins/registrations' }
+  devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :users
+  resources :admins
 
   resources :reservations
 
