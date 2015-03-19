@@ -40,8 +40,6 @@ ActiveRecord::Schema.define(version: 20150319202801) do
     t.datetime "startTime"
     t.datetime "endTime"
     t.integer  "partySize"
-    t.integer  "tables",        default: [],              array: true
-    t.integer  "seats",         default: [],              array: true
     t.integer  "user_id"
     t.integer  "restaurant_id"
     t.datetime "created_at",                 null: false
@@ -52,8 +50,6 @@ ActiveRecord::Schema.define(version: 20150319202801) do
     t.string   "name"
     t.string   "category"
     t.string   "description"
-    t.integer  "tables",      default: [],              array: true
-    t.integer  "seats",       default: [],              array: true
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
