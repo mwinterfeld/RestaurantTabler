@@ -7,7 +7,11 @@ class ApplicationController < ActionController::Base
   	if resource.is_a?(User)
   		user_path(resource.id)
   	elsif resource.is_a?(Admin)
-  		admin_path(resource.id)
+      unless Admin.find(resource.id)['restaurant_id']
+        new_restaurant_path
+      else
+  		  admin_path(resource.id)
+      end
   	end
   end
 
