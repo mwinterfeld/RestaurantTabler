@@ -15,5 +15,11 @@
   <%= @restaurant.description %>
 </p>
 
+<p>
+  <strong>Logo:</strong>
+  <%= image_tag @restaurant.logo.url(:medium) %>
+</p>
+
+
 <%= link_to 'Edit', edit_restaurant_path(@restaurant) %> |
 <%= link_to 'Back', restaurants_path %>
