@@ -49,10 +49,21 @@ ActiveRecord::Schema.define(version: 20150319202801) do
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
+<<<<<<< HEAD
+    t.text     "description"
+    t.integer  "admin_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "logo_file_name"
+    t.string   "logo_content_type"
+    t.integer  "logo_file_size"
+    t.datetime "logo_updated_at"
+=======
     t.string   "description"
     t.integer  "admin_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+>>>>>>> master
   end
 
   create_table "tables", force: :cascade do |t|

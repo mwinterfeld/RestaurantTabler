@@ -17,11 +17,15 @@
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.select :category, [ 'American', 'Chinese', 'Greek', 'Japanese', 'Mexican', 'Nepali' ], :prompt => 'Select One' %>
+    <%= f.select :category, [ 'American', 'Chinese', 'Greek', 'Italian', 'Japanese', 'Mexican', 'Nepali', 'Thai' , 'Other'], :prompt => 'Select One' %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :logo %><br>
+    <%= f.file_field :logo %>
   </div>
   <div class="actions">
     <%= f.submit %>

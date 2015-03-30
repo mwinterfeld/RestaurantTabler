@@ -5,6 +5,7 @@
 <table>
   <thead>
     <tr>
+      <th>Logo</th>
       <th>Name</th>
       <th>Category</th>
       <th>Description</th>
@@ -15,6 +16,7 @@
   <tbody>
     <% @restaurants.each do |restaurant| %>
       <tr>
+        <td><%= image_tag restaurant.logo.url(:thumb) %></td>
         <td><%= restaurant.name %></td>
         <td><%= restaurant.category %></td>
         <td><%= restaurant.description %></td>
