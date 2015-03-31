@@ -13,3 +13,14 @@
  *= require_tree .
  *= require_self
  */
+
+ // Wrappers
+ #wrapper {
+   width: 100%;
+ }
+
+ #page-wrapper {
+   padding: 50px 10px;
+   min-height: 568px;
+   background-color: white;
+ }
