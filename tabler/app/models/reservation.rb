@@ -1,5 +1,7 @@
 class Reservation < ActiveRecord::Base
 	belongs_to :users
 	belongs_to :restaurants
-	has_many :tables
+	def tables
+		return 1
+	end
 end
