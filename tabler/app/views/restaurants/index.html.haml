@@ -1,0 +1,20 @@
+%p#notice= notice
+%h1 Listing Restaurants
+%table
+  %thead
+    %tr
+      %th Name
+      %th Category
+      %th Description
+      %th{:colspan => "3"}
+  %tbody
+    - @restaurants.each do |restaurant|
+      %tr
+        %td= restaurant.name
+        %td= restaurant.category
+        %td= restaurant.description
+        %td= link_to 'Show', restaurant
+        %td= link_to 'Edit', edit_restaurant_path(restaurant)
+        %td= link_to 'Destroy', restaurant, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Restaurant', new_restaurant_path

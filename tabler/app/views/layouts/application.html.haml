@@ -1,0 +1,13 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title Tabler
+    = stylesheet_link_tag    'application', media: 'all'
+    = csrf_meta_tags
+  %body
+    #wrapper
+      = render partial: "layouts/navigation"
+    #page-wrapper
+      %div.container-fluid
+        = yield

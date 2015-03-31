@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Starttime:
+  = @reservation.startTime
+%p
+  %strong Endtime:
+  = @reservation.endTime
+%p
+  %strong Partysize:
+  = @reservation.partySize
+%p
+  %strong Tables:
+  = @reservation.tables
+%p
+  %strong Seats:
+  = @reservation.seats
+= link_to 'Edit', edit_reservation_path(@reservation)
+|
+= link_to 'Back', reservations_path
