@@ -14,10 +14,14 @@
   .field
     = f.label :category
     %br/
-    = f.text_field :category
+    = f.select :category, [ 'American', 'Chinese', 'Greek', 'Italian', 'Japanese', 'Mexican', 'Nepali', 'Thai' , 'Other'], :prompt => 'Select One'
   .field
     = f.label :description
     %br/
     = f.text_field :description
+  .field
+    = f.label :logo
+    %br/
+    = f.file_field :logo
   .actions
     = f.submit
