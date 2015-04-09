@@ -9,11 +9,11 @@
   %strong Partysize:
   = @reservation.partySize
 %p
-  %strong Tables:
-  = @reservation.tables
+  %strong Table Id:
+  = @reservation.table_id
 %p
-  %strong Seats:
-  = @reservation.seats
+  %strong numSeats:
+
 = link_to 'Edit', edit_reservation_path(@reservation)
 |
 = link_to 'Back', reservations_path

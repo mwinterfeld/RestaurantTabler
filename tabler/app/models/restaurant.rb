@@ -9,6 +9,6 @@ class Restaurant < ActiveRecord::Base
 
 	# Associations
 	has_many :reservations
-	has_many :tables, through: :reservations
+	has_many :tables
 	belongs_to :admin
 end
