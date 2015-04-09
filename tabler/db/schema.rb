@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150325022017) do
+ActiveRecord::Schema.define(version: 20150409050428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,6 @@ ActiveRecord::Schema.define(version: 20150325022017) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "firstName"
-    t.string   "lastName"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -44,13 +42,13 @@ ActiveRecord::Schema.define(version: 20150325022017) do
     t.integer  "restaurant_id"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "tableID"
   end
 
   create_table "restaurants", force: :cascade do |t|
     t.string   "name"
     t.string   "category"
     t.text     "description"
-    t.integer  "admin_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "logo_file_name"
@@ -61,9 +59,8 @@ ActiveRecord::Schema.define(version: 20150325022017) do
 
   create_table "tables", force: :cascade do |t|
     t.integer  "num_seats"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
-    t.integer  "reservation_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
     t.integer  "restaurant_id"
   end
 
@@ -82,6 +79,7 @@ ActiveRecord::Schema.define(version: 20150325022017) do
     t.datetime "updated_at"
     t.string   "firstName"
     t.string   "lastName"
+    t.boolean  "isAdmin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

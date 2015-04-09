@@ -6,7 +6,7 @@
       %th Starttime
       %th Endtime
       %th Partysize
-      %th Tables
+      %th Table ID
       %th Seats
       %th{:colspan => "3"}
   %tbody
@@ -15,8 +15,8 @@
         %td= reservation.startTime
         %td= reservation.endTime
         %td= reservation.partySize
-        %td= reservation.tables
-        %td= reservation.seats
+        %td= reservation.tableID
+        %td
         %td= link_to 'Show', reservation
         %td= link_to 'Edit', edit_reservation_path(reservation)
         %td= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' }
