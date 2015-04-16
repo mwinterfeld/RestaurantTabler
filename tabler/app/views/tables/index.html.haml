@@ -1,0 +1,16 @@
+%h1= "Listing Tables for #{@restaurant.name}"
+%table.table.table-striped
+  %thead
+    %tr
+      %th Table Id
+      %th Total Seats
+      %th{:colspan => "3"}
+  %tbody
+    - @tables.each do |table|
+      %tr
+        %td= table.id
+        %td= table.num_seats
+        %td= link_to 'Edit', edit_restaurant_path(table)
+        %td= link_to 'Destroy', restaurant_table_path(@restaurant,table), method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Table', new_restaurant_table_path

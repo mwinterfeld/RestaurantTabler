@@ -1,0 +1,15 @@
+= form_for [@restaurant, @table] do |f|
+  - if @table.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@table.errors.count, "error")
+        prohibited this table from being saved:
+      %ul
+        - @table.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :num_seats
+    %br/
+    = f.text_field :num_seats
+  .actions
+    = f.submit

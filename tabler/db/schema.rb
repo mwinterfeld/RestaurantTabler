@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 20150409184931) do
     t.inet     "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "firstName"
+    t.string   "lastName"
   end
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
@@ -49,6 +51,7 @@ ActiveRecord::Schema.define(version: 20150409184931) do
     t.string   "name"
     t.string   "category"
     t.text     "description"
+    t.integer  "admin_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "logo_file_name"
@@ -79,7 +82,6 @@ ActiveRecord::Schema.define(version: 20150409184931) do
     t.datetime "updated_at"
     t.string   "firstName"
     t.string   "lastName"
-    t.boolean  "isAdmin"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
