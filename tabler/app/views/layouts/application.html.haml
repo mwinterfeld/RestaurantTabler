@@ -26,10 +26,15 @@
           %span.icon-bar
         %a.navbar-brand(href="/") Tabler
         .navbar-collapse.collapse.navbar-responsive-collapse
-          %ul.nav.navbar-nav
-
+          %ul.nav.navbar-nav.pull-right
+            - if user_signed_in?
+              - puts "User signed in"
+              %li= link_to "Logout User", destroy_user_session_path, :method => :delete
+            - else
+              - puts "User not signed in"
+              %li= link_to "User Login", new_user_session_path
+            - if admin_signed_in?
+              %li= link_to "Logout Admin", destroy_admin_session_path, :method => :delete
     .container
-      .row
-        .col-lg-12
-          = bootstrap_flash
-          = yield
+      = bootstrap_flash
+      = yield
