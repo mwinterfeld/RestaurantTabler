@@ -1,3 +1,7 @@
 .row.col-md-6.col-md-offset-3
-  = form_tag '/search', :method => "get" do
-    = text_field_tag :query, nil, :placeholder => "Search", :class => "form-control input-lg"
+  = form_tag '/search', :method => "get" do |f|
+    .input-group
+      = text_field_tag :query, nil, :placeholder => "Search for a Restaurant ...", :class => "form-control input-lg"
+      %span.input-group-btn
+        %button.btn.btn-primary.input-lg
+          I'm Hungry!
