@@ -1,9 +1,8 @@
 class SearchController < ApplicationController
 	def search
-    redirect_to '/'
+		puts params.inspect
 	end
 
 	def index
-
 	end
 end

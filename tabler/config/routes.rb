@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :tables
   end
 
-  post '/search' => "search#search"
+  get '/search' => "search#search"
 
 
   # The priority is based upon order of creation: first created -> highest priority.
