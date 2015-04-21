@@ -10,11 +10,14 @@ Rails.application.routes.draw do
     resources :tables
   end
 
+  post '/search' => "search#search"
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  #root :to => "users/sign_in"
+  root :to => "search#index"
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
