@@ -1,1 +1,11 @@
 %h3 Your Search Results:
+
+.row
+  %table.table.table-striped
+    %tbody
+      - unless @search_results.nil?
+        - @search_results.each do |result|
+          %tr
+            %td= link_to "#{result.searchable.name}", result.searchable
+            %td= result.searchable.category
+            %td= result.searchable.description
