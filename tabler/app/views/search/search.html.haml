@@ -2,10 +2,17 @@
 
 .row
   %table.table.table-striped
+    %thead
+      %tr
+        %th Logo
+        %th Name
+        %th Category
+        %th Description
     %tbody
       - unless @search_results.nil?
         - @search_results.each do |result|
           %tr
+            %td= image_tag result.searchable.logo.url(:thumb)
             %td= link_to "#{result.searchable.name}", result.searchable
             %td= result.searchable.category
             %td= result.searchable.description
