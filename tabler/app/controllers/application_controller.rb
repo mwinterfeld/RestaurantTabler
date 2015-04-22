@@ -7,12 +7,7 @@ class ApplicationController < ActionController::Base
   	if resource.is_a?(User)
   		user_path(resource.id)
   	elsif resource.is_a?(Admin)
-      restaurant = Restaurant.find_by_admin_id(resource.id)
-      if restaurant.nil?
-        new_restaurant_path
-      else
-  		  restaurant_path(restaurant.id)
-      end
+      restaurants_path
   	end
   end
 
