@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :admins, :controllers => { registrations: 'admins/registrations' }
+  devise_for :admins, :controllers => { registrations: 'admins/registrations', sessions: 'admins/sessions'}
   devise_for :users, :controllers => { registrations: 'users/registrations' }
   resources :users
   resources :admins
@@ -17,7 +17,9 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root :to => "search#index"
+  devise_scope :user do
+    root :to => 'devise/sessions#new'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

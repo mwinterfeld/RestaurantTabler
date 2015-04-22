@@ -24,4 +24,6 @@
       %h3
         Nothing to show...
         %i.fa.fa-frown-o
-        %a.underline{:href=>'/'} Let's try again!
+.row
+  - if user_signed_in?
+    = link_to "Back", user_path(current_user), class: 'btn btn-default'

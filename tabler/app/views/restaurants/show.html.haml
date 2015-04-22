@@ -1,15 +1,21 @@
-%p
-  %strong Name:
-  = @restaurant.name
-%p
-  %strong Category:
-  = @restaurant.category
-%p
-  %strong Description:
-  = @restaurant.description
-%p
-  %strong Logo:
-  = image_tag @restaurant.logo.url(:medium)
-%br/
-= link_to 'Edit', edit_restaurant_path(@restaurant)
-= link_to 'Back', restaurants_path
+.row
+  .col-lg-8
+    %h3
+      %strong= @restaurant.name
+    %h3
+      Category:
+      = @restaurant.category
+    %h3
+      Description:
+      - unless @restaurant.description.blank?
+        = @restaurant.description
+      - else
+        No Description available at the moment.
+  .col-lg-4
+    = image_tag @restaurant.logo.url(:medium)
+.row
+  .col-lg-12
+    %p
+      - if admin_signed_in?
+        = link_to 'Edit', edit_restaurant_path(@restaurant), class: 'btn'
+      = link_to 'Back', restaurants_path, class: 'btn'

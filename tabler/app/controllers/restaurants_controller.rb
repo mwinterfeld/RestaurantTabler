@@ -1,10 +1,11 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_admin!, except: [:show, :index]
 
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.all
+    @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 3)
   end
 
   # GET /restaurants/1

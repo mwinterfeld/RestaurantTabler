@@ -28,3 +28,18 @@
 .underline{
   text-decoration: underline;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}
+
+.navbar-inverse .navbar-brand{
+  color: #F9F9F9;
+}
+
+.awesome{
+    color: #F6F6F6 !important;
+    background-color: #000 !important;
+    border-color: #FFF !important;
+}

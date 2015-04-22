@@ -52,3 +52,5 @@ gem "twitter-bootstrap-rails"
 gem "haml-rails", "~> 0.9"
 
 gem 'pg_search'
+gem 'will_paginate'
+gem "bootstrap-will_paginate"

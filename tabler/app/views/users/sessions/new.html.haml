@@ -1,18 +1,26 @@
-.col-md-6.col-centered
-  %h2 User Log in
-  = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
-    .field
-      = f.label :email
-      %br/
-      = f.email_field :email, autofocus: true
-    .field
-      = f.label :password
-      %br/
-      = f.password_field :password, autocomplete: "off"
-    - if devise_mapping.rememberable?
-      .field
-        = f.check_box :remember_me
-        = f.label :remember_me
-    .actions
-      = f.submit "Log in"
-  = render "users/shared/links"
+.row.col-lg-4.col-lg-offset-4.col-centered.text-center
+  .row
+    .panel.panel-default
+      .panel-heading.panel-default.awesome
+        .panel-title
+          %h3
+            Welcome to Tabler
+            %i.fa.fa-smile-o
+      .panel-body
+        = form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .field
+            = f.label :email
+            %br/
+            = f.email_field :email, autofocus: true
+          .field
+            = f.label :password
+            %br/
+            = f.password_field :password, autocomplete: "off"
+          - if devise_mapping.rememberable?
+            .field
+              = f.check_box :remember_me
+              = f.label :remember_me
+          .actions
+            = f.submit "Log in"
+        = render "users/shared/links"
+        = link_to "Admin Login", new_admin_session_path, class: 'underline'
