@@ -1,11 +1,11 @@
 class RestaurantsController < ApplicationController
   before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
   before_filter :authenticate_admin!, except: [:show, :index]
+  before_filter :filter_restaurants, only: [:index]
 
   # GET /restaurants
   # GET /restaurants.json
   def index
-    @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 3)
   end
 
   # GET /restaurants/1
@@ -72,5 +72,15 @@ class RestaurantsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def restaurant_params
       params.require(:restaurant).permit(:name, :category, :description, :logo)
+    end
+
+    def filter_restaurants
+      unless current_user.nil?
+        @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 3)
+      end
+
+      unless current_admin.nil?
+        @restaurants = current_admin.restaurants.paginate(:page => params[:page], :per_page => 3)
+      end
     end
 end
