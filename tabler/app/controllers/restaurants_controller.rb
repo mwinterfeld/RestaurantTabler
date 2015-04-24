@@ -21,6 +21,9 @@ class RestaurantsController < ApplicationController
 
   # GET /restaurants/1/edit
   def edit
+    unless can_edit_and_destroy? params[:id]
+      redirect_to restaurants_path, :flash => {:error => 'Error: You are not authorized to view this resource.'}
+    end
   end
 
   # POST /restaurants
@@ -56,10 +59,14 @@ class RestaurantsController < ApplicationController
   # DELETE /restaurants/1
   # DELETE /restaurants/1.json
   def destroy
-    @restaurant.destroy
-    respond_to do |format|
-      format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
-      format.json { head :no_content }
+    if can_edit_and_destroy? params[:id]
+      @restaurant.destroy
+      respond_to do |format|
+        format.html { redirect_to restaurants_url, notice: 'Restaurant was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      redirect_to restaurants_url, :flash => {:error => 'Error: Operation not permitted.'}
     end
   end
 
@@ -82,5 +89,14 @@ class RestaurantsController < ApplicationController
       unless current_admin.nil?
         @restaurants = current_admin.restaurants.paginate(:page => params[:page], :per_page => 3)
       end
+    end
+
+    def can_edit_and_destroy? restaurant_id
+      unless current_admin.nil?
+        if current_admin.restaurants.where(:id => restaurant_id).first.nil?
+          return false
+        end
+      end
+      return true
     end
 end
