@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   resources :admins
 
   resources :restaurants do
-    resources :tables
-    resources :reservations
+    resources :tables do
+      resources :reservations
+    end
   end
 
   get '/search' => "search#search"

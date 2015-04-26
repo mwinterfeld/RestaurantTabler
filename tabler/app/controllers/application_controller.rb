@@ -13,7 +13,6 @@ class ApplicationController < ActionController::Base
 
   def logged_in?
     if !current_user.nil? or !current_admin.nil?
-      puts "logged in!"
       return true
     end
    return false

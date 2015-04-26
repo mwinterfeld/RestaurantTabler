@@ -6,7 +6,6 @@
       %th Endtime
       %th Partysize
       %th Table Id
-      %th Seats
       %th{:colspan => "3"}
   %tbody
     - @reservations.each do |reservation|
@@ -15,9 +14,10 @@
         %td= reservation.endTime
         %td= reservation.partySize
         %td= reservation.table_id
-        %td
-        %td= link_to 'Show', restaurant_reservation_path(@restaurant, reservation)
-        %td= link_to 'Edit', edit_restaurant_reservation_path(@restaurant,reservation)
-        %td= link_to 'Destroy', restaurant_reservation_path(@restaurant, reservation), method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'View Details', restaurant_table_reservation_path(@restaurant, @table, reservation)
+        - if admin_signed_in?
+          %td= link_to 'Edit', edit_restaurant_table_reservation_path(@restaurant, @table, reservation)
+          %td= link_to 'Destroy', restaurant_table_reservation_path(@restaurant, @table, reservation), method: :delete, data: { confirm: 'Are you sure?' }
 %br/
-= link_to 'New Reservation', new_restaurant_reservation_path
+= link_to 'New Reservation', new_restaurant_table_reservation_path, class: 'btn'
+= link_to 'Back to Table', restaurant_tables_path(@restaurant), class: 'btn'

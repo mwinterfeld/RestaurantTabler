@@ -1,10 +1,10 @@
 class TablesController < ApplicationController
-  before_action :set_restaurant, only: [:index, :new, :create, :destroy]
+  before_action :set_restaurant
   before_action :set_table, only: [:destroy]
   before_filter :logged_in?
+  before_filter :filter_tables, only: [:index]
 
   def index
-    @tables = Table.where(:restaurant_id => @restaurant.id)
   end
 
   def new
@@ -44,5 +44,16 @@ class TablesController < ApplicationController
 
     def table_params
       params.require(:table).permit(:num_seats, :restaurant_id)
+    end
+
+    def filter_tables
+      unless current_user.nil?
+        @reserved_tables = @restaurant.reservations.table
+        @tables = Table.where(:restaurant_id => @restaurant.id)
+      end
+
+      unless current_admin.nil?
+        @tables = Table.where(:restaurant_id => @restaurant.id)
+      end
     end
 end
