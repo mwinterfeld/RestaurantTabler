@@ -4,10 +4,9 @@ Rails.application.routes.draw do
   resources :users
   resources :admins
 
-  resources :reservations
-
   resources :restaurants do
     resources :tables
+    resources :reservations
   end
 
   get '/search' => "search#search"

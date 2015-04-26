@@ -1,5 +1,7 @@
 class ReservationsController < ApplicationController
+  before_action :set_restaurant, only: [:index, :new, :edit, :show, :create, :destroy]
   before_action :set_reservation, only: [:show, :edit, :update, :destroy]
+  before_filter :logged_in?
 
   # GET /reservations
   # GET /reservations.json
@@ -28,7 +30,7 @@ class ReservationsController < ApplicationController
 
     respond_to do |format|
       if @reservation.save
-        format.html { redirect_to @reservation, notice: 'Reservation was successfully created.' }
+        format.html { redirect_to [@restaurant, @reservation], notice: 'Reservation was successfully created.' }
         format.json { render :show, status: :created, location: @reservation }
       else
         format.html { render :new }
@@ -62,6 +64,10 @@ class ReservationsController < ApplicationController
   end
 
   private
+    def set_restaurant
+      @restaurant = Restaurant.find(params[:restaurant_id])
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_reservation
       @reservation = Reservation.find(params[:id])
@@ -69,6 +75,6 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:startTime, :endTime, :partySize, :tables, :seats)
+      params.require(:reservation).permit(:startTime, :endTime, :partySize)
     end
 end

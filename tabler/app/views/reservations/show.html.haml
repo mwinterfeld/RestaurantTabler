@@ -13,6 +13,6 @@
 %p
   %strong numSeats:
 
-= link_to 'Edit', edit_reservation_path(@reservation)
+= link_to 'Edit', edit_restaurant_reservation_path(@restaurant, @reservation)
 |
-= link_to 'Back', reservations_path
+= link_to 'Back', restaurant_reservations_path

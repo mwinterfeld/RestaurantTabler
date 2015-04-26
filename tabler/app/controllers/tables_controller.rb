@@ -1,6 +1,7 @@
 class TablesController < ApplicationController
   before_action :set_restaurant, only: [:index, :new, :create, :destroy]
   before_action :set_table, only: [:destroy]
+  before_filter :logged_in?
 
   def index
     @tables = Table.where(:restaurant_id => @restaurant.id)
