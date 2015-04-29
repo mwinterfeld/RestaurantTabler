@@ -83,11 +83,11 @@ class RestaurantsController < ApplicationController
 
     def filter_restaurants
       unless current_user.nil?
-        @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 3)
+        @restaurants = Restaurant.paginate(:page => params[:page], :per_page => 4)
       end
 
       unless current_admin.nil?
-        @restaurants = current_admin.restaurants.paginate(:page => params[:page], :per_page => 3)
+        @restaurants = current_admin.restaurants.paginate(:page => params[:page], :per_page => 4)
       end
     end
 

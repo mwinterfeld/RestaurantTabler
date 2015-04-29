@@ -13,7 +13,7 @@
     %table.table.table-striped
       %thead
         %tr
-          %th Logo
+          %th Restaurant Image
           %th Name
           %th Category
           %th Description
@@ -27,3 +27,7 @@
 
 .row
   = will_paginate @restaurants, :class => 'text-center'
+
+- if admin_signed_in?
+  .row
+    = link_to 'Add Restaurant', new_restaurant_path, class: 'btn'
