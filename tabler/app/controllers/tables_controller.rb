@@ -48,7 +48,8 @@ class TablesController < ApplicationController
 
     def filter_tables
       unless current_user.nil?
-        @tables = Table.where(:restaurant_id => @restaurant.id).order('num_seats')
+        @restaurant_tables = Table.where(:restaurant_id => @restaurant.id)
+        @tables = @restaurant_tables.where.not(id: @restaurant_tables.joins(:reservations).where(reservations: {:restaurant_id => @restaurant.id}).select('id')).order('num_seats')
       end
 
       unless current_admin.nil?

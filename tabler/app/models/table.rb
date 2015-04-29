@@ -1,5 +1,5 @@
 class Table < ActiveRecord::Base
-	belongs_to :reservation
+	has_many :reservations
 	belongs_to :restaurant
 
 	accepts_nested_attributes_for :restaurant
