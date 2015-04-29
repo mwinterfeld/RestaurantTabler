@@ -11,8 +11,10 @@
   %tbody
     - @user_reservations.each do |reservation|
       %tr
-        %td= link_to "#{reservation.id}", [@restaurant, reservation.table, reservation]
+        - reservation_table = reservation.table
+        %td= link_to "#{reservation.id}", [@restaurant, reservation_table, reservation]
         %td= reservation.startTime
         %td= reservation.endTime
         %td= reservation.table_id
         %td= reservation.table.num_seats
+        %td= link_to 'Destroy', restaurant_table_reservation_path(@restaurant, reservation_table, reservation), method: :delete, data: { confirm: 'Are you sure?' }
