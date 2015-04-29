@@ -2,11 +2,13 @@
 %table.table.table-striped
   %thead
     %tr
+      %th Table Id
       %th Total Seats
       %th{:colspan => "2"}
   %tbody
     - @tables.each do |table|
       %tr
+        %td= table.id
         %td= table.num_seats
         %td= link_to 'Reserve Now', new_restaurant_table_reservation_path(@restaurant, table)
         - if admin_signed_in?
