@@ -1,0 +1,18 @@
+%h3 Listing Your Reservations
+%table.table.table-striped
+  %thead
+    %tr
+      %th Id
+      %th Starttime
+      %th Endtime
+      %th Table Id
+      %th Number of Seats
+      %th{:colspan => "3"}
+  %tbody
+    - @user_reservations.each do |reservation|
+      %tr
+        %td= link_to "#{reservation.id}", [@restaurant, reservation.table, reservation]
+        %td= reservation.startTime
+        %td= reservation.endTime
+        %td= reservation.table_id
+        %td= reservation.table.num_seats

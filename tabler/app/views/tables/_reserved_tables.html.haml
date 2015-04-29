@@ -1,0 +1,14 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th Table Id
+      %th Total Seats
+      %th{:colspan => "2"}
+  %tbody
+    - @reserved_tables.each do |table|
+      %tr
+        %td= table.id
+        %td= table.num_seats
+        %td= link_to 'Aleady Reserved', restaurant_table_reservations_path(@restaurant, table.id)
+        - if admin_signed_in?
+          %td= link_to 'Delete', restaurant_table_path(@restaurant,table), method: :delete, data: { confirm: 'Are you sure?' }
