@@ -17,4 +17,4 @@
         %td= reservation.endTime
         %td= reservation.table_id
         %td= reservation.table.num_seats
-        %td= link_to 'Destroy', restaurant_table_reservation_path(@restaurant, reservation_table, reservation), method: :delete, data: { confirm: 'Are you sure?' }
+        %td= link_to 'Cancel Reservation', restaurant_table_reservation_path(@restaurant, reservation_table, reservation), method: :delete, data: { confirm: 'Are you sure?' }
