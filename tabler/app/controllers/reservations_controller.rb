@@ -8,7 +8,7 @@ class ReservationsController < ApplicationController
   # GET /reservations
   # GET /reservations.json
   def index
-    @reservations = Reservation.where(:restaurant_id => @restaurant.id)
+    @reservations = Reservation.where(:restaurant_id => @restaurant.id, :table_id => @table.id)
   end
 
   # GET /reservations/1

@@ -47,13 +47,13 @@ class TablesController < ApplicationController
     end
 
     def filter_tables
-      unless current_user.nil?
-        @restaurant_tables = Table.where(:restaurant_id => @restaurant.id)
-        @tables = @restaurant_tables.where.not(id: @restaurant_tables.joins(:reservations).where(reservations: {:restaurant_id => @restaurant.id}).select('id')).order('num_seats')
-      end
+      @restaurant_tables = Table.where(:restaurant_id => @restaurant.id)
+      @available_tables = @restaurant_tables.where.not(id: @restaurant_tables.joins(:reservations).where(reservations: {:restaurant_id => @restaurant.id}).select('id')).order('num_seats')
 
       unless current_admin.nil?
-        @tables = Table.where(:restaurant_id => @restaurant.id)
+        @reserved_tables = @restaurant_tables.joins(:reservations).where(reservations: {:restaurant_id => @restaurant.id})
+      else
+        @user_reservations = Reservation.where(:restaurant_id => @restaurant.id, :user_id => current_user.id).order(startTime: :desc)
       end
     end
 end

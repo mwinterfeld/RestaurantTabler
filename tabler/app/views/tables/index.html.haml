@@ -1,19 +1,14 @@
-%h1= "Listing Tables for #{@restaurant.name}"
-%table.table.table-striped
-  %thead
-    %tr
-      %th Table Id
-      %th Total Seats
-      %th{:colspan => "2"}
-  %tbody
-    - @tables.each do |table|
-      %tr
-        %td= table.id
-        %td= table.num_seats
-        %td= link_to 'Reserve Now', new_restaurant_table_reservation_path(@restaurant, table)
-        - if admin_signed_in?
-          %td= link_to 'Delete', restaurant_table_path(@restaurant,table), method: :delete, data: { confirm: 'Are you sure?' }
-%br/
-- if admin_signed_in?
-  = link_to 'New Table', new_restaurant_table_path, class: 'btn'
-= link_to 'Back', restaurant_path(@restaurant), class: 'btn'
+.row
+  %h1= "Listing Tables for #{@restaurant.name}"
+.row
+  = render 'available_tables'
+.row
+  - if admin_signed_in?
+    = render 'reserved_tables'
+  - elsif user_signed_in?
+    = render 'reservations/user_reservations'
+.row
+  %br/
+  - if admin_signed_in?
+    = link_to 'New Table', new_restaurant_table_path, class: 'btn'
+  = link_to 'Back', restaurant_path(@restaurant), class: 'btn'
