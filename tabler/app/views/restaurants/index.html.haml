@@ -24,6 +24,8 @@
             %td= link_to "#{restaurant.name}", restaurant
             %td= restaurant.category
             %td= restaurant.description
+            - if admin_signed_in?
+              %td= link_to 'Delete Restaurant', restaurant_path(restaurant), method: :delete, data: { confirm: 'Are you sure?' }
 
 .row
   = will_paginate @restaurants, :class => 'text-center'
