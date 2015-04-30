@@ -24,7 +24,8 @@
           %span.icon-bar
           %span.icon-bar
           %span.icon-bar
-        %a.navbar-brand.awesome-text(href="/restaurants") Tabler
+        - if user_signed_in? or admin_signed_in?
+          %a.navbar-brand.awesome-text(href="/restaurants") Tabler
         .navbar-collapse.collapse.navbar-responsive-collapse
           %ul.nav.navbar-nav.pull-right
             - if user_signed_in?
